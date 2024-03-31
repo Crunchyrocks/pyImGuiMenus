@@ -1,0 +1,37 @@
+{
+    "Aim": {
+        "enable": true,
+        "aim_accel_value": 72,
+        "aim_key_index": 0,
+        "aim_key_index2": 1,
+        "silent_aim_enabled": true,
+        "fov_aim_enabled": true,
+        "slider_value": 90,
+        "norecoil_aim_enabled": true,
+        "nospread_aim_enabled": true,
+        "aim_bone_index": 0,
+        "aimallies_aim_enabled": true,
+        "ignorebot_aim_enabled": true,
+        "ignordowned_aim_enabled": true
+    },
+    "Visuals": {
+        "enable": true,
+        "espline_enabled": true,
+        "espbox_enabled": true,
+        "showname_enabled": true,
+        "showgun_enabled": true,
+        "showhealth_enabled": true,
+        "showdist_enabled": true,
+        "playerwarn_enabled": true,
+        "showcash_enabled": true,
+        "showguns_enabled": true,
+        "showchest_enabled": true,
+        "showleth_enabled": true,
+        "showlootdist_enabled": true
+    },
+    "Misc": {
+        "super_speed_enabled": true,
+        "unlockall_enabled": true,
+        "superslide_enabled": true
+    }
+}

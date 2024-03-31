@@ -1,0 +1,22 @@
+{
+    "Aim": {
+        "enable": true,
+        "aim_accel_value": 36,
+        "aim_key_index": 0,
+        "aim_key_index2": 0,
+        "silent_aim_enabled": false,
+        "fov_aim_enabled": true,
+        "slider_value": 90,
+        "norecoil_aim_enabled": true,
+        "nospread_aim_enabled": false,
+        "aim_bone_index": 0,
+        "aimallies_aim_enabled": false,
+        "ignorebot_aim_enabled": false,
+        "ignordowned_aim_enabled": false
+    },
+    "Visuals": {},
+    "Misc": {},
+    "Configs": {
+        "Settings 1": {}
+    }
+}
