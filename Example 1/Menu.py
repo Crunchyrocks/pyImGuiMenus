@@ -55,10 +55,10 @@ class GUI(object):
             "Configs": {}
         }
 
-        # Load settings for all configuration areas
+        
         self.load_settings()
 
-        # Initialize exit_requested attribute
+        
         self.exit_requested = False
         
         self.loop()
@@ -68,10 +68,9 @@ class GUI(object):
         settings = self.tab_settings["Configs"].get(f"Settings {index + 1}", {})
         try:
             with open(filename, 'w') as file:
-                # Iterate over each setting and include it in the settings dictionary
                 for key, value in self.tab_settings.items():
                     if key == "Configs":
-                        continue  # Skip the "Configs" key
+                        continue 
                     settings[key] = value
                 json.dump(settings, file, indent=4)
                 print(f"Settings saved to {filename}: {settings}")
@@ -84,8 +83,6 @@ class GUI(object):
             with open("Settings_1.json", "r") as file:
                 settings = json.load(file)
                 print("Settings loaded from Settings_1.json:", settings)
-            
-                # Update UI elements with loaded settings
                 for key, value in settings.items():
                     if key in self.tab_settings:
                         for sub_key, sub_value in value.items():
@@ -93,9 +90,6 @@ class GUI(object):
                                 self.tab_settings[key][sub_key] = sub_value
         except FileNotFoundError:
             print("No settings file found: Settings_1.json")
-            # Handle the case when the settings file is not found
-
-
     def loop(self):
         while not self.exit_requested:
             while self.rendering:
@@ -117,30 +111,21 @@ class GUI(object):
         self.impl.shutdown()
         glfw.terminate()
 
-
     def draw_menu(self):
         imgui.set_next_window_size(360, 508)
-
-        
         if imgui.begin("Menu - Demo", not self.menu_collapsed):
-
-          
             for i, tab in enumerate(self.tabs):
                 if i > 0:
                     imgui.same_line()
                 if imgui.button(tab, 80, 20):
                     print(f"{tab} button clicked")
                     self.current_tab_index = i  
-
            
             imgui.spacing()
             imgui.separator()
 
-        
             self.draw_tab_content(self.tabs[self.current_tab_index])
-
         imgui.end()
-
     def draw_tab_content(self, tab_title):
         if tab_title == "Aim":
             self.draw_aim_tab()
@@ -156,7 +141,6 @@ class GUI(object):
         _, self.tab_settings["Aim"]["enable"] = imgui.checkbox("Enable Aim", self.tab_settings["Aim"]["enable"])
         _, self.tab_settings["Aim"]["aim_accel_value"] = imgui.slider_int("Strength", self.tab_settings["Aim"]["aim_accel_value"], 1, 100)
 
-
         # Aim key 1
         aim_key_options = ["Right Click", "Left Click", "Shift", "Custom"]
         _, self.tab_settings["Aim"]["aim_key_index"] = imgui.combo("##aim_key_combo1", self.tab_settings["Aim"]["aim_key_index"], aim_key_options)
@@ -171,7 +155,6 @@ class GUI(object):
         imgui.spacing()
         imgui.separator()
         imgui.spacing()
-
         
         imgui.text("Aim Settings:")
         _, self.tab_settings["Aim"]["silent_aim_enabled"] = imgui.checkbox("Silent Aim", self.tab_settings["Aim"]["silent_aim_enabled"])
@@ -182,7 +165,6 @@ class GUI(object):
 
         imgui.separator()
         imgui.spacing()
-
 
         imgui.text("Target Options:")
         aimbone_key_options = ["Head", "Neck", "Chest", "Body", "Random"]
@@ -218,16 +200,12 @@ class GUI(object):
         _, self.tab_settings["Visuals"]["showleth_enabled"] = imgui.checkbox("Show Lethals", self.tab_settings["Visuals"].get("showleth_enabled", False))
         _, self.tab_settings["Visuals"]["showlootdist_enabled"] = imgui.checkbox("Show Loot Distance", self.tab_settings["Visuals"].get("showlootdist_enabled", False))
 
-
-        
-
     def draw_misc_tab(self):
         imgui.text("Misc:")
         imgui.spacing()
         _, self.tab_settings["Misc"]["super_speed_enabled"] = imgui.checkbox("Super Speed", self.tab_settings["Misc"].get("super_speed_enabled", False))
         _, self.tab_settings["Misc"]["unlockall_enabled"] = imgui.checkbox("Unlock All", self.tab_settings["Misc"].get("unlockall_enabled", False))
         _, self.tab_settings["Misc"]["superslide_enabled"] = imgui.checkbox("Super Slide", self.tab_settings["Misc"].get("superslide_enabled", False))
-
 
     def draw_configs_tab(self):
         for i in range(self.num_settings_areas):
@@ -243,7 +221,6 @@ class GUI(object):
 
             if imgui.button(f"Load##{i + 1}"):
                 self.load_settings()
-
 
 if __name__ == "__main__":
     gui = GUI()
